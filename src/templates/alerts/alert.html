@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Alert <small>for ' {{ alert.item.name }} '</small></h1>
+</div>
+<p> Last price found <strong>{{ alert.item.price }}</strong></p>
+<p> Last checked on <strong>{{ alert.last_checked.strftime('%d-%m-%Y at %H:%M') }}</strong></p>
+<div class="panel panel-default">
+    <div class="panel-body">
+        {% if alert.active %}
+        <a class="btn btn-primary" href="{{ alert.item.url }}" role="button">Visit Site</a>
+        <a class="btn btn-warning" href="{{ url_for('alerts.edit_alert', alert_id=alert._id) }}" role="button">Edit Alert</a>
+        <a class="btn btn-warning" href="{{ url_for('alerts.check_alert_price', alert_id=alert._id) }}" role="button">Check alert price</a>
+        <a class="btn btn-danger" href="{{ url_for('alerts.deactivate_alert', alert_id=alert._id) }}">Deactivate Alert</a>
+        {% else %}
+        <a class="btn btn-success" href="{{ url_for('alerts.activate_alert', alert_id=alert._id) }}">Activate Alert</a>
+        <a class="btn btn-danger" href="{{ url_for('alerts.delete_alert', alert_id=alert._id) }}">Delete Alert</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

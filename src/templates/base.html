@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'html_dependencies.html' %}
+
+    {% block head %} 
+    
+    {% endblock %}
+</head>
+<body > <!--You can add    style="background-image: url('static/imgs/cloud.jpg')"-->
+  <nav class="navbar navbar" id="nav">
+    <div class="container">
+        <div class="navbar-header" id="nav-head">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar" aria-expanded="false">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+            <a href="/" class="active navbar-brand" style="font-size: 25px;" title="Home"><b>TeXperience</b></a> &nbsp;
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/trending" href="javascript:void(0)" class="navbar-item"><strong>Trending</strong></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/help"><b> Help </b></a></li>
+            </ul>
+            {% if session['email'] %}
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('users.profile') }}" href="javascript:void(0)" class="navbar-item"><b> Profile </b></a></li>
+               </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="{{ url_for('users.logout_user') }}" class="navbar-item" style="float: right;"><span class="glyphicon glyphicon-log-out"></span><b> Logout </b></a></li>
+            </ul>
+            {% else %}
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="{{ url_for('users.login_user') }}" class="navbar-item"><span class="glyphicon glyphicon-log-in"></span><b> Login </b></a></li> 
+              <li><a href="{{ url_for('users.register_user') }}" class="navbar-item"><span class="glyphicon glyphicon-user"></span><b> Signup </b></a></li>
+            </ul>
+            {% endif %}         
+        </div>
+
+        </div>
+    </div>
+</nav>
+
+  {% block content %}
+
+  {% endblock %}
+
+   </body>
+
+<footer class="container-fluid text-center">
+  {% block footer%}  {% endblock %}
+</footer>
+</html>
