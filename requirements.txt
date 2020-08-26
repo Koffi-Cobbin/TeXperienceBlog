@@ -1,5 +1,5 @@
-Flask
-Pymongo
-requests
-passlib
+Flask==1.1.1
+Pymongo==3.10.1
+requests==2.24.0
+passlib==1.6.5
 uwsgi
