@@ -1,6 +1,5 @@
-Flask==
-Pymongo==
-beautifulSoup==
-requests==
-passlib==
-uwsgi==
+Flask
+Pymongo
+requests
+passlib
+uwsgi
