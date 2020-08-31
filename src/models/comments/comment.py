@@ -1,10 +1,10 @@
 __author__ = "Cobbin"
 
 import uuid
-from common.database import Database
-from common.utils import Utils
+from src.common.database import Database
+from src.common.utils import Utils
 from datetime import datetime
-import models.comments.constants as  CommentConstants
+import src.models.comments.constants as  CommentConstants
 
 class Comment(object):
     def __init__(self, content, user_id, blog_id, author_id, date_posted=None, _id=None):
