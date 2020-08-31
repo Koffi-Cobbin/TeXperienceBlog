@@ -1,8 +1,8 @@
 __author__ = "Cobbin"
 import uuid
-from common.database import Database
-import models.blogs.constants as BlogConstants
-import models.blogs.errors as blogErrors
+from src.common.database import Database
+import src.models.blogs.constants as BlogConstants
+import src.models.blogs.errors as blogErrors
 from datetime import datetime   
 
 class BlogPost(object):
