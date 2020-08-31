@@ -39,7 +39,7 @@
   <div>   
   {% set cnt = [0] %}
   {% if posts %}
-  {% for post in posts %}
+  {% for post in posts[:3] %}
   <div class="row">
 <!-- If first post or the most recent post, then add ADDS [:3:-1]-->
       {% if cnt[0] == 0 %}
@@ -93,8 +93,8 @@
       </div> <!-- End of row -->
       {% endfor %}
   {% else %}
-  <p> You have no posts yet! </p>
-  <p> Add new posts to view them. </p>
+    <p> You have no posts yet! </p>
+    <p> Add new posts to view them. </p>
   {% endif %}
     <hr>
     </div>
@@ -112,7 +112,7 @@
       <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
     </div>
     <div class="col-sm-7">
-      <a href="/delete_user/{{ user.author_id }}" class="navbar-item">
+      <a href="{{ url_for('users.delete_user', author_id = user.author_id) }}" class="navbar-item">
         Del_Account
         </a>
     </div>
@@ -122,22 +122,3 @@
     </div>
     </div>
 {% endblock%}
-
-
-
-
-
-
-
- 
-     
-
-
-
-
-
-
-
-  
-
-
