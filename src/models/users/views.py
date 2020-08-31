@@ -10,7 +10,6 @@ from src.models.postImages.postImage import PostImage
 from src.models.comments.comment import Comment
 #------------------------------------------------
 from src.app_constants import ALLOWED_EXTENSIONS, UPLOAD_FOLDER, allowed_file
-from flask_login import current_user
 from werkzeug.utils import secure_filename
 import base64, os
 
