@@ -1,15 +1,15 @@
 __author__ = "Cobbin"
 
 from flask import Blueprint, render_template, redirect, request, url_for, session
-from models.blogs.blog import BlogPost
-from models.users.user import User
-from models.comments.comment import Comment
-from models.postImages.postImage import PostImage
+from src.models.blogs.blog import BlogPost
+from src.models.users.user import User
+from src.models.comments.comment import Comment
+from src.models.postImages.postImage import PostImage
+import src.models.users.decorators as User_decorators
 import json
-import models.users.decorators as User_decorators
 #--------------------------------------------------
 from flask_login import current_user
-from app_constants import UPLOAD_FOLDER, ALLOWED_EXTENSIONS, allowed_file
+from src.app_constants import UPLOAD_FOLDER, ALLOWED_EXTENSIONS, allowed_file
 from werkzeug.utils import secure_filename
 import base64, os
 
