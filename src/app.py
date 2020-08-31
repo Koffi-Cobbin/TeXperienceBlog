@@ -66,9 +66,9 @@ def contact():
     return redirect(url_for('trending'))
 
 
-from models.users.views import user_blueprint
-from models.blogs.views import blog_blueprint
-from models.comments.views import comment_blueprint
+from src.models.users.views import user_blueprint
+from src.models.blogs.views import blog_blueprint
+from src.models.comments.views import comment_blueprint
 app.register_blueprint(user_blueprint, url_prefix="/users")
 app.register_blueprint(blog_blueprint, url_prefix="/blogs")
 app.register_blueprint(comment_blueprint, url_prefix="/comments")
