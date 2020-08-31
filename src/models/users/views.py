@@ -2,14 +2,14 @@ __author__ = "Cobbin"
 
 from flask import Blueprint, request, session, url_for, flash, render_template
 from werkzeug.utils import redirect
-from models.users.user import User
-import models.users.errors as UserErrors
-import models.users.decorators as user_decorators
-from models.blogs.blog import BlogPost
-from models.postImages.postImage import PostImage
-from models.comments.comment import Comment
+from src.models.users.user import User
+import src.models.users.errors as UserErrors
+import src.models.users.decorators as user_decorators
+from src.models.blogs.blog import BlogPost
+from src.models.postImages.postImage import PostImage
+from src.models.comments.comment import Comment
 #------------------------------------------------
-from app_constants import ALLOWED_EXTENSIONS, UPLOAD_FOLDER, allowed_file
+from src.app_constants import ALLOWED_EXTENSIONS, UPLOAD_FOLDER, allowed_file
 from flask_login import current_user
 from werkzeug.utils import secure_filename
 import base64, os
