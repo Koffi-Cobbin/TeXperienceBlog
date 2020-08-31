@@ -1,15 +1,16 @@
 __author__ = 'cobbin'
 
 import pymongo
+import os
 
 class Database(object):
-    URI = "mongodb://127.0.0.1:27017"
+    URI = os.environ.get("MONGODB_URI")
     DATABASE = None
 
     @staticmethod
     def initialize():
         client = pymongo.MongoClient(Database.URI)
-        Database.DATABASE = client['texperience_blog'] 
+        Database.DATABASE = client['texperience-blog'] 
 
     @staticmethod
     def insert(collection, data):
