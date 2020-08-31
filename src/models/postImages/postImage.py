@@ -1,10 +1,10 @@
 __author__ = "Cobbin"
 import requests
 import re
-import models.postImages.constants as imageConstants
-from common.database import Database
+import src.models.postImages.constants as imageConstants
+from src.common.database import Database
 import uuid
-from models.blogs.blog import BlogPost
+from src.models.blogs.blog import BlogPost
 
     
 class PostImage(object):
