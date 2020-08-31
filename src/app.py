@@ -10,7 +10,7 @@ from werkzeug.utils import redirect
 #---------------------------------------------------------------------------------------------
 
 app = Flask(__name__)
-app.config.from_object('config')
+app.config.from_object('src.config')
 app.secret_key = "1234"
 #----------------------------------------------
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
