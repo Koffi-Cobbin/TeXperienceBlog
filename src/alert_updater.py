@@ -1,6 +1,6 @@
 __author__ = "Cobbin"
-from models.alerts.alert import Alert
-from common.database import Database
+from src.models.alerts.alert import Alert
+from src.common.database import Database
 
 Database.initialize()
 
