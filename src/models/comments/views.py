@@ -1,8 +1,8 @@
 from flask import Blueprint, request, session, url_for, render_template
 from werkzeug.utils import redirect
-from models.comments.comment import Comment
-from models.users.user import User
-import models.users.decorators as user_decorators
+from src.models.comments.comment import Comment
+from src.models.users.user import User
+import src.models.users.decorators as user_decorators
 
 comment_blueprint = Blueprint('comments', __name__)
 
