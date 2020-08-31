@@ -16,19 +16,21 @@ body{
   color: black !important;
   background-color: #fff !important;
 }
-#nav a.active{
-   /* color: white !important; #f4511e 
-  border-radius: 10px; */
-  border: 2px solid white; 
+
+#nav .logo{
+  padding: 0px 0px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid white;
 }
-#nav a.active:hover{
-  color: black;
-}
+
 #nav-head button{
   background-color: white;
   }
 
-#nav-head span{
+#nav-head button span{
   color: black;
   }
 
