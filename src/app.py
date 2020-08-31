@@ -1,11 +1,11 @@
 __author__ = "Cobbin"
 from flask import Flask, render_template, request, url_for, flash
 import requests
-from common.database import Database
-from app_constants import ALLOWED_EXTENSIONS, UPLOAD_FOLDER
-from models.blogs.blog import BlogPost
-from models.postImages.postImage import PostImage
-import models.alerts.constants as AlertConstants
+from src.common.database import Database
+from src.app_constants import ALLOWED_EXTENSIONS, UPLOAD_FOLDER
+from src.models.blogs.blog import BlogPost
+from src.models.postImages.postImage import PostImage
+import src.models.alerts.constants as AlertConstants
 from werkzeug.utils import redirect
 #---------------------------------------------------------------------------------------------
 
