@@ -1,9 +1,9 @@
 __author__ = "Cobbin"
 import uuid
-import models.alerts.constants as AlertConstants
+import src.models.alerts.constants as AlertConstants
 import requests, datetime
-from common.database import Database
-from models.items.item import Item
+from src.common.database import Database
+from src.models.items.item import Item
 
 class Alert(object):
     def __init__(self, user_email, price_limit, item_id, active=True, last_checked=None, _id=None):
