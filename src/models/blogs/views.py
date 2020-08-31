@@ -8,7 +8,6 @@ from src.models.postImages.postImage import PostImage
 import src.models.users.decorators as User_decorators
 import json
 #--------------------------------------------------
-from flask_login import current_user
 from src.app_constants import UPLOAD_FOLDER, ALLOWED_EXTENSIONS, allowed_file
 from werkzeug.utils import secure_filename
 import base64, os
