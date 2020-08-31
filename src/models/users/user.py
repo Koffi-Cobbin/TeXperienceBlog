@@ -1,9 +1,9 @@
 __author__ = "Cobbin"
 import uuid
-from common.database import Database
-from common.utils import Utils
-import models.users.errors as UserErrors
-import models.users.constants as UserConstants
+from src.common.database import Database
+from src.common.utils import Utils
+import src.models.users.errors as UserErrors
+import src.models.users.constants as UserConstants
 
 
 class User(object):
