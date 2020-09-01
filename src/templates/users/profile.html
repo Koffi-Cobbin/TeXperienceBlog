@@ -57,7 +57,7 @@
   <div class="row">
 <!-- If first post or the most recent post, then add ADDS [:3:-1]-->
       {% if cnt[0] == 0 %}
-      <div class="col-sm-2 sidenav">
+      <!--<div class="col-sm-2 sidenav">
         <p><a href="#">Link</a></p>
         <p><a href="#">Link</a></p>
         <p><a href="#">Link</a></p>
@@ -67,7 +67,7 @@
         <div class="well">
           <p>ADS</p>
         </div>
-      </div>
+      </div>-->
       {% endif %}
 <!-- If first post or the most recent post, then add the Main Heading and post in a col-sm-7  -->
       {% if cnt[0] == 0 %}
@@ -94,14 +94,14 @@
       </div>
 <!-- If first post or the most recent post, then add close the col-7 and ADDS   -->      
         {% if cnt[0] == 0 %}
-        <div class="col-sm-2 sidenav">
+        <!--<div class="col-sm-2 sidenav">
           <div class="well">
             <p>ADS</p>
           </div>
           <div class="well">
             <p>ADS</p>
           </div>
-         </div>
+         </div>-->
          {% if cnt.append(cnt.pop() + 1) %}{% endif %}
          {% endif %}
       </div> <!-- End of row -->
