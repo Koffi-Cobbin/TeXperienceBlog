@@ -8,7 +8,7 @@
 {% block user_actions %}  
 <ul id="user_actions" class="nav navbar-nav dropdown d-flex align-items-center justify-content-md-end mt-3 mt-md-0 navbar-right" style="padding: 10px 0px 0px;">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-    Hello, John Doe
+    Hello, {{ user.name }}
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <li><a class="dropdown-item" href="#">Settings</a></li>
