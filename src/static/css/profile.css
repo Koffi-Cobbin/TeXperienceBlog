@@ -68,3 +68,7 @@
 .button:hover {
  background-color: #555;
 }
+
+#user_actions{
+  color: #000;
+}
