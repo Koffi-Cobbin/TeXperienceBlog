@@ -5,6 +5,19 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
 {% endblock %}
 
+{% block user_actions %}  
+<ul class="nav navbar-nav dropdown d-flex align-items-center justify-content-md-end mt-3 mt-md-0 navbar-right">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+    Hello, John Doe
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li><a class="dropdown-item" href="#">Settings</a></li>
+    <li><a class="dropdown-item" href="#">Messages</a></li>
+    <li><a href="{{ url_for('users.logout_user') }}" class="navbar-item"><span class="glyphicon glyphicon-log-out"></span><b> Sign out</b></a></li>
+  </ul>
+</ul>
+{% endblock %}
+
 {% block content %}
 <!-- You can add other css links here-->
 <div class="container">
