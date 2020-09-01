@@ -26,10 +26,6 @@ body{
   border: 2px solid white;
 }
 
-#nav-head button{
-  background-color: white;
-  }
-
 #nav-head button span{
   color: black;
   }
