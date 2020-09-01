@@ -12,7 +12,7 @@
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <li><a class="dropdown-item" href="#" style="color: #000;">Messages</a></li>
-    <li><a href="{{ url_for('users.logout_user') }}" class="navbar-item"><span class="glyphicon glyphicon-log-out" style="color: #000;"></span> Sign out </a></li>
+    <li><a href="{{ url_for('users.logout_user') }}" class="navbar-item" style="color: #000;"><span class="glyphicon glyphicon-log-out"></span> Sign out </a></li>
     <li><a class="dropdown-item" href="#" style="color: #000;">Settings</a></li>
     <li><a href="{{ url_for('users.delete_user', author_id = user.author_id) }}" class="navbar-item" style="color: #000;"> Delete Account </a></li>
   </ul>
