@@ -7,11 +7,12 @@ from src.models.blogs.blog import BlogPost
 from src.models.postImages.postImage import PostImage
 import src.models.alerts.constants as AlertConstants
 from werkzeug.utils import redirect
+import os
 #---------------------------------------------------------------------------------------------
 
 app = Flask(__name__)
 app.config.from_object('src.config')
-app.secret_key = "1234"
+app.secret_key = os.environ.get("SECRETE_KEY")
 #----------------------------------------------
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 #---------------------------------------------------
