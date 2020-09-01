@@ -6,15 +6,15 @@
 {% endblock %}
 
 {% block user_actions %}  
-<ul class="nav navbar-nav dropdown user_actions d-flex align-items-center justify-content-md-end mt-3 mt-md-0 navbar-right" style="padding: 10px 0px 0px;">
-  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+<ul class="nav navbar-nav dropdown d-flex align-items-center justify-content-md-end mt-3 mt-md-0 navbar-right" style="padding: 10px 0px 0px;">
+  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" style="color: #000;">
     Hello, {{ user.name }}
   </button>
-  <ul class="dropdown-menu user_actions" aria-labelledby="dropdownMenuButton">
-    <li><a class="dropdown-item" href="#">Messages</a></li>
-    <li><a href="{{ url_for('users.logout_user') }}" class="navbar-item"><span class="glyphicon glyphicon-log-out"></span><b> Sign out</b></a></li>
-    <li><a class="dropdown-item" href="#">Settings</a></li>
-    <li><a href="{{ url_for('users.delete_user', author_id = user.author_id) }}" class="navbar-item"> Delete Account </a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li><a class="dropdown-item" href="#" style="color: #000;">Messages</a></li>
+    <li><a href="{{ url_for('users.logout_user') }}" class="navbar-item"><span class="glyphicon glyphicon-log-out" style="color: #000;"></span> Sign out </a></li>
+    <li><a class="dropdown-item" href="#" style="color: #000;">Settings</a></li>
+    <li><a href="{{ url_for('users.delete_user', author_id = user.author_id) }}" class="navbar-item" style="color: #000;"> Delete Account </a></li>
   </ul>
 </ul>
 {% endblock %}
