@@ -11,9 +11,10 @@
     Hello, {{ user.name }}
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <li><a class="dropdown-item" href="#">Settings</a></li>
     <li><a class="dropdown-item" href="#">Messages</a></li>
     <li><a href="{{ url_for('users.logout_user') }}" class="navbar-item"><span class="glyphicon glyphicon-log-out"></span><b> Sign out</b></a></li>
+    <li><a class="dropdown-item" href="#">Settings</a></li>
+    <li><a href="{{ url_for('users.delete_user', author_id = user.author_id) }}" class="navbar-item"> Delete Account </a></li>
   </ul>
 </ul>
 {% endblock %}
@@ -125,9 +126,7 @@
       <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
     </div>
     <div class="col-sm-7">
-      <a href="{{ url_for('users.delete_user', author_id = user.author_id) }}" class="navbar-item">
-        Del_Account
-        </a>
+      
     </div>
     </div>
   <div class="copyright">
