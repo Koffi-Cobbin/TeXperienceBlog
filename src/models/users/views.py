@@ -82,7 +82,7 @@ def edit_profile():
         if image and allowed_file(image.filename):
             image_filename = secure_filename(image.filename)
             path = os.path.join(UPLOAD_FOLDER, image_filename)
-            image.save(path)
+            image.save(url_for(path))
             with open(url_for(path), 'rb') as img:
                 encoded_image = base64.b64encode(img.read())
                 user.profile_image = encoded_image
