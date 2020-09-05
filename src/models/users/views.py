@@ -11,7 +11,8 @@ from src.models.comments.comment import Comment
 #------------------------------------------------
 from src.app_constants import ALLOWED_EXTENSIONS, UPLOAD_FOLDER, allowed_file
 from werkzeug.utils import secure_filename
-import base64, os
+from PIL import Image
+import base64, os, io
 
 
 user_blueprint = Blueprint('users', __name__)
@@ -80,12 +81,13 @@ def edit_profile():
     if request.method == 'POST':
         image = request.files['image_file']
         if image and allowed_file(image.filename):
-            image_filename = secure_filename(image.filename)
-            path = os.path.join(UPLOAD_FOLDER, image_filename)
-            image.save(url_for(path))
-            with open(image, 'rb') as img:
-                encoded_image = base64.b64encode(img.read())
-                user.profile_image = encoded_image
+            #image_filename = secure_filename(image.filename)
+            #path = os.path.join(UPLOAD_FOLDER, image_filename)
+            #image.save(url_for(path))
+            image_bytes = Image.open(io.BytesIO(image.read())
+            #with open(image, 'rb') as img:
+                #encoded_image = base64.b64encode(img.read())
+            user.profile_image = image_bytes #encoded_image
         user.name = request.form['name']
         user.email = request.form['email']
         user.save_to_db()
