@@ -74,7 +74,7 @@ def profile():
 
 def image_to_byte_array(image:Image):
   imgByteArr = io.BytesIO()
-  image.save(imgByteArr, format=image.format)
+  image.save(imgByteArr, format=image)
   imgByteArr = imgByteArr.getvalue()
   return imgByteArr
 
