@@ -94,7 +94,7 @@ def edit_profile():
         user.save_to_db()
         return redirect(url_for('.profile'))
     return render_template('users/edit_profile.html', name=name, email=email)
-
+                                            
             #image_filename = secure_filename(image.filename)
             #path = os.path.join(UPLOAD_FOLDER, image_filename)
             #image.save(url_for(path))
