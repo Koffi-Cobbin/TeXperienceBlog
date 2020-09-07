@@ -81,8 +81,8 @@ def edit_profile():
     if request.method == 'POST':
         image = request.files['image_file']
         if image and allowed_file(image.filename):
-            image_bytes = Image.open(io.BytesIO(image.read())
-            user.profile_image = image_bytes #encoded_image
+            #image_bytes = Image.open(io.BytesIO(image.read())
+            user.profile_image = Image.open(io.BytesIO(image.read()) #encoded_image
             #image_filename = secure_filename(image.filename)
             #path = os.path.join(UPLOAD_FOLDER, image_filename)
             #image.save(url_for(path))
