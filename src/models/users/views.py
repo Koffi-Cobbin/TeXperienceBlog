@@ -86,10 +86,8 @@ def edit_profile():
             #image_filename = secure_filename(image.filename)
             #path = os.path.join(UPLOAD_FOLDER, image_filename)
             #image.save(url_for(path))
-            
             #with open(image, 'rb') as img:
                 #encoded_image = base64.b64encode(img.read())
-            
         user.name = request.form['name']
         user.email = request.form['email']
         user.save_to_db()
