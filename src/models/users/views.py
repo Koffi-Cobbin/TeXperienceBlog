@@ -83,8 +83,12 @@ def edit_profile():
         if image and allowed_file(image.filename):
             #image_bytes = Image.open(io.BytesIO(image.read())
             user.profile_image = Image.open(io.BytesIO(image.read()) #encoded_image
-        name = request.form['name']
-        email = request.form['email']
+        try:
+            name = request.form['name']
+            email = request.form['email']
+        except:
+            name = None
+            email = None                            
         user.name = name
         user.email = email
         user.save_to_db()
