@@ -72,6 +72,12 @@ def profile():
         profile_img = None
     return render_template('users/profile.html', user = user, profile_image=profile_img, posts=all_posts)
 
+def image_to_byte_array(image:Image):
+  imgByteArr = io.BytesIO()
+  image.save(imgByteArr, format=image.format)
+  imgByteArr = imgByteArr.getvalue()
+  return imgByteArr
+
 @user_blueprint.route('/edit_profile', methods=['POST', 'GET'])
 @user_decorators.requires_login
 def edit_profile():
@@ -81,7 +87,9 @@ def edit_profile():
     if request.method == 'POST':
         image = request.files['image_file']
         if image and allowed_file(image.filename):
-            user.profile_image = Image.open(io.BytesIO(image.read())) #encoded_image                          
+            #user.profile_image = Image.open(io.BytesIO(image.read())) #encoded_image   
+             user.profile_image = image_to_byte_array(image)
+           
         user.name = request.form['name']
         user.email = request.form['email']
         user.save_to_db()
