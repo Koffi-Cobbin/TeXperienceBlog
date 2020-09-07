@@ -83,17 +83,18 @@ def edit_profile():
         if image and allowed_file(image.filename):
             #image_bytes = Image.open(io.BytesIO(image.read())
             user.profile_image = Image.open(io.BytesIO(image.read()) #encoded_image
-            #image_filename = secure_filename(image.filename)
-            #path = os.path.join(UPLOAD_FOLDER, image_filename)
-            #image.save(url_for(path))
-            #with open(image, 'rb') as img:
-                #encoded_image = base64.b64encode(img.read())
         user.name = request.form['name']
         user.email = request.form['email']
         user.save_to_db()
         return redirect(url_for('.profile'))
     return render_template('users/edit_profile.html', name=name, email=email)
 
+            #image_filename = secure_filename(image.filename)
+            #path = os.path.join(UPLOAD_FOLDER, image_filename)
+            #image.save(url_for(path))
+            #with open(image, 'rb') as img:
+                #encoded_image = base64.b64encode(img.read())
+                                            
 @user_blueprint.route('/logout')
 def logout_user():
     session['email'] = None
