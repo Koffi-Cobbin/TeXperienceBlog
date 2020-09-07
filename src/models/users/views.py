@@ -81,16 +81,9 @@ def edit_profile():
     if request.method == 'POST':
         image = request.files['image_file']
         if image and allowed_file(image.filename):
-            #image_bytes = Image.open(io.BytesIO(image.read())
-            user.profile_image = Image.open(io.BytesIO(image.read()) #encoded_image
-        try:
-            name = request.form['name']
-            email = request.form['email']
-        except:
-            name = None
-            email = None                            
-        user.name = name
-        user.email = email
+            user.profile_image = Image.open(io.BytesIO(image.read())) #encoded_image                          
+        user.name = request.form['name']
+        user.email = request.form['email']
         user.save_to_db()
         return redirect(url_for('.profile'))
     return render_template('users/edit_profile.html', name=name, email=email)
