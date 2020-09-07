@@ -81,13 +81,15 @@ def edit_profile():
     if request.method == 'POST':
         image = request.files['image_file']
         if image and allowed_file(image.filename):
+            image_bytes = Image.open(io.BytesIO(image.read())
+            user.profile_image = image_bytes #encoded_image
             #image_filename = secure_filename(image.filename)
             #path = os.path.join(UPLOAD_FOLDER, image_filename)
             #image.save(url_for(path))
-            image_bytes = Image.open(io.BytesIO(image.read())
+            
             #with open(image, 'rb') as img:
                 #encoded_image = base64.b64encode(img.read())
-            user.profile_image = image_bytes #encoded_image
+            
         user.name = request.form['name']
         user.email = request.form['email']
         user.save_to_db()
