@@ -10,7 +10,7 @@
     <hr>
     <h2>Edit Blog Post:</h2>
     <hr>
-    <form action="{{ url_for('blogs.editpost', id = post._id) }}" method="POST">
+    <form action="{{ url_for('blogs.editpost', id = post._id) }}" method="POST" enctype="multipart/form-data">
         <label for="content">Title</label> 
         <input class="form-control" type="text" name='title' id='title' value="{{post.title}}" aria-label="Enter Title">
         <br>
@@ -20,6 +20,8 @@
         <label for="content">Post</label>
         <textarea class="form-control" name="content" id="content" aria-label="Enter Content" rows="3">{{post.content}}</textarea>
         <br>
+        <label>Select a Post Image to upload: </label>
+        <input type="file" name="image_file"><br>  
         <input type='submit' class="btn btn-success" value="Save">
     </form>
     <hr>
