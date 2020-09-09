@@ -13,7 +13,7 @@ from src.app_constants import ALLOWED_EXTENSIONS, UPLOAD_FOLDER, allowed_file
 from werkzeug.utils import secure_filename
 from PIL import Image
 import base64, os, io
-
+import tempfile
 
 user_blueprint = Blueprint('users', __name__)
 
@@ -81,18 +81,23 @@ def edit_profile():
     if request.method == 'POST':
         image = request.files['image_file']
         if image and allowed_file(image.filename):
-            user.profile_image = Image.open(io.BytesIO(image.data.read())) #encoded_image     
+            image_filename = secure_filename(image.filename)
+            
+            with tempfile.TemporaryDirectory() as tmpdirname:
+                #print('created temporary directory', tmpdirname)
+                path = os.path.join(tmpdirname, image_filename)
+                image.save(path)
+                with open(path, 'rb') as img:
+                    encoded_image = base64.b64encode(img.read())
+                    user.profile_image = encoded_image 
+                    
         user.name = request.form['name']
         user.email = request.form['email']
         user.save_to_db()
         return redirect(url_for('.profile'))
     return render_template('users/edit_profile.html', name=name, email=email)
                                             
-            #image_filename = secure_filename(image.filename)
-            #path = os.path.join(UPLOAD_FOLDER, image_filename)
-            #image.save(url_for(path))
-            #with open(image, 'rb') as img:
-                #encoded_image = base64.b64encode(img.read())
+            
                                             
 @user_blueprint.route('/logout')
 def logout_user():
