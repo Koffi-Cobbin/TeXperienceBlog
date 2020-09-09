@@ -58,6 +58,18 @@ def editpost(id):
         blog_post.title = request.form['title']
         blog_post.author = request.form['author']
         blog_post.content = request.form['content']
+        
+        image = request.files['image_file']
+        if image and allowed_file(image.filename):
+            image_filename = secure_filename(image.filename)
+            with tempfile.TemporaryDirectory() as tmpdirname:
+                path = os.path.join(tmpdirname, image_filename)
+                image.save(path)
+                with open(path, 'rb') as img:
+                    encoded_image = base64.b64encode(img.read())
+                    post_image_id = PostImage(image_filename, blog_post._id, blog_post.author_id, encoded_image).save_to_mongo()  
+                    blog_post.post_images.append(post_image_id)
+        
         blog_post.save_to_mongo()
         return redirect(url_for('users.user_posts', author_id = blog_post.author_id))
     return render_template('blogs/editpost.html', post = blog_post)
