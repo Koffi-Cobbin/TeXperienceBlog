@@ -35,7 +35,7 @@ def new_post(id):
         if image and allowed_file(image.filename):
             image_filename = secure_filename(image.filename)
             
-             with tempfile.TemporaryDirectory() as tmpdirname:
+            with tempfile.TemporaryDirectory() as tmpdirname:
                 path = os.path.join(tmpdirname, image_filename)
                 image.save(path)
                 with open(path, 'rb') as img:
