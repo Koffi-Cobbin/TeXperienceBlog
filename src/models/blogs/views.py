@@ -11,6 +11,7 @@ import json
 from src.app_constants import UPLOAD_FOLDER, ALLOWED_EXTENSIONS, allowed_file
 from werkzeug.utils import secure_filename
 import base64, os
+import tempfile
 
 
 blog_blueprint = Blueprint('blogs', __name__)
@@ -33,14 +34,18 @@ def new_post(id):
         image = request.files['image_file']
         if image and allowed_file(image.filename):
             image_filename = secure_filename(image.filename)
-            path = os.path.join(UPLOAD_FOLDER, image_filename)
-            image.save(path)
-            with open(path, 'rb') as img:
-                encoded_image = base64.b64encode(img.read())
-                post_image_id = PostImage(image_filename, new_post_id, user.author_id, encoded_image).save_to_mongo()  
-                post = BlogPost.get_by_id(new_post_id)
-                post.post_images.append(post_image_id)
-                post.save_to_mongo()
+            
+             with tempfile.TemporaryDirectory() as tmpdirname:
+                path = os.path.join(tmpdirname, image_filename)
+                image.save(path)
+                with open(path, 'rb') as img:
+                    encoded_image = base64.b64encode(img.read())
+                    user.profile_image = encoded_image
+                    post_image_id = PostImage(image_filename, new_post_id, user.author_id, encoded_image).save_to_mongo()  
+                    post = BlogPost.get_by_id(new_post_id)
+                    post.post_images.append(post_image_id)
+                    post.save_to_mongo()
+                
         return redirect(url_for('users.user_posts', author_id = user.author_id))  
     return render_template("blogs/new_post.html", user=user)
 
