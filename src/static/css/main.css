@@ -28,8 +28,12 @@ body{
 
 #nav-head button span{
   color: black;
-  }
+  } 
 
+#logotext {
+  text-decoration: none;
+  padding-top: 3px;
+}
 /* Set gray background color and 100% height */
 .sidenav {
   padding-top: 20px;
