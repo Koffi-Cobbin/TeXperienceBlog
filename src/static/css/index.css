@@ -1,4 +1,4 @@
-body{
+ body{
   background-image: url('/static/imgs/oldtech1.jpg');
   height: 100vh;
   background-size: cover;
@@ -11,7 +11,7 @@ body{
   padding: 10px;
 }
 
-#logotext{
+#logotext {
   text-decoration: none;
   padding-top: 3px;
 }
