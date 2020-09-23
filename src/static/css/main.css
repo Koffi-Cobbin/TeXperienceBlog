@@ -30,10 +30,11 @@ body{
   color: black;
   } 
 
-#logotext {
+#nav .logo b {
   text-decoration: none;
   padding-top: 3px;
-}
+} 
+
 /* Set gray background color and 100% height */
 .sidenav {
   padding-top: 20px;
