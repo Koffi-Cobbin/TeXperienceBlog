@@ -30,7 +30,7 @@ body{
   color: black;
   } 
 
-#nav .logo b {
+#nav-head a b {
   text-decoration: none;
   padding-top: 3px;
 } 
