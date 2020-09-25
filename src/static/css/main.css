@@ -26,11 +26,11 @@ body{
   border: 2px solid white;
 }
 
-#nav-head button span{
+.nav-head button span{
   color: black;
   } 
 
-#nav-head a text {
+.nav-head text {
   text-decoration: none;
   margin-top: 10px;
   padding-top: 15px;
