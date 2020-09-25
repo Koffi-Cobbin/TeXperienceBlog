@@ -36,6 +36,12 @@ body{
   padding-top: 15px;
 } 
 
+#logotext {
+   text-decoration: none;
+  margin-top: 10px;
+  padding-top: 15px;
+} 
+  
 /* Set gray background color and 100% height */
 .sidenav {
   padding-top: 20px;
