@@ -25,7 +25,8 @@
         {% set cnt = [posts_length-1] %}
         {% set idx = [indexes_length] %}
         {% if posts %}
-          {% for post in posts[:3] %}
+          <div id="page1" style="display: block;">
+          {% for post in posts[:1] %}
           <article class="article-bg">
               <h2 class="subtitle">{{ post.title }}</h2>
               {% if post.author %}
@@ -49,6 +50,35 @@
           </article>
           {% if cnt.append(cnt.pop() - 1) %}{% endif %}
           {% endfor %}
+       </div>
+       
+          <div id="page2" style="display: none;">
+          {% for post in posts[1:] %}
+          <article class="article-bg">
+              <h2 class="subtitle">{{ post.title }}</h2>
+              {% if post.author %}
+                  <small><strong>Written by {{ post.author }} on {{ post.date_posted }}</strong></small><br>
+              {% else %}
+                  <small>Written by Unknown on {{ post.date_posted }}</small><br>
+              {% endif %}
+
+              {% if cnt[0] == post_indexes[idx[0]-1] %}
+              <div class="post_image" style="background-image: url('data:image/png;base64, {{ post_images[idx[0]-1][0] }}');">
+                  <div class="top-left"> </div>
+              </div>
+              {% if idx.append(idx.pop() - 1) %}{% endif %}
+              {% endif %}
+      
+              <span class="label label-primary">{{ post.category }}</span> &nbsp <span class="badge">{{ post.likes[0] }}</span><strong>views</strong><br>
+              <br>
+              <p style="white-space: pre-wrap; font-size: medium; font-family: sans-serif;">{{ post.content[:500] }}...</p>
+              <a href="{{ url_for('blogs.readmore', post_id=post._id) }}"><span>Read more</span><br></a>
+              <hr color="#787878" style="height: 3px;"> <hr color="#A9A9A9" style="height: 3px;"> 
+          </article>
+          {% if cnt.append(cnt.pop() - 1) %}{% endif %}
+          {% endfor %}
+       </div>
+       
         {% else %}
           <h3> There are no post Yet!</h3>
           <h3> SignUp to add a Post!!!</h3>
@@ -71,11 +101,12 @@
 {% block footer %}
 <div class="container footer">
     <div id="myDIV">
-        <button id="footer_btn" class="btn current_btn">1</button>
-        <button id="footer_btn" class="btn">2</button>
+        <button id="footer_btn" class="btn" onclick="prev()"> << Prev </button>
+        <button id="footer_btn" class="btn current_btn" onclick="next()"> Next >> </button>
+        <!--<button id="footer_btn" class="btn">2</button>
         <button id="footer_btn" class="btn">3</button>
         <button id="footer_btn" class="btn">4</button>
-        <button id="footer_btn" class="btn">5</button>
+        <button id="footer_btn" class="btn">5</button>-->
     </div>
     <hr>
     <div class="ddd">
@@ -122,5 +153,22 @@
         </div>    
     </div>
 </div>
-
+ <script>
+   var page_lst = ["page1", "page2", "page3"]
+   var i = 0;
+   function next(){
+     var body_content = document.getElementById(page_lst[i]);
+     body_content.style.display = "none";
+     i = i + 1;
+     var el = document.getElementById(page_lst[i]);
+     el.style.display = "block";
+   }
+   function prev(){
+     var body_content = document.getElementById(page_lst[i]);
+     body_content.style.display = "none";
+     i--;
+     var  el = document.getElementById(page_lst[i]);
+     el.style.display = "block";
+   }
+ </script>
 {% endblock%}
