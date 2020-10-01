@@ -68,6 +68,9 @@ def editpost(id):
                 with open(path, 'rb') as img:
                     encoded_image = base64.b64encode(img.read())
                     post_image_id = PostImage(image_filename, blog_post._id, blog_post.author_id, encoded_image).save_to_mongo()  
+                    if blog_post.post_images is not None:
+                        PostImage.get_by_id(blog_post.post_images[0]).delete()
+                        blog_post.post_images.pop() 
                     blog_post.post_images.append(post_image_id)
         
         blog_post.save_to_mongo()
