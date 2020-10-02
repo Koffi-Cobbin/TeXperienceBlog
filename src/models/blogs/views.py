@@ -70,7 +70,8 @@ def editpost(id):
                     post_image_id = PostImage(image_filename, blog_post._id, blog_post.author_id, encoded_image).save_to_mongo()  
                     if blog_post.post_images is not None:
                         try:
-                            PostImage.get_by_id(blog_post.post_images[0]).delete()
+                            print(PostImage.get_by_id(blog_post.post_images[0]))
+                            
                         except:
                             pass
                         blog_post.post_images.pop() 
