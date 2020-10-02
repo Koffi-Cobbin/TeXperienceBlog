@@ -9,7 +9,7 @@ TO = None
 SUBJECT = None
 ALERT_TIMEOUT = 10
 COLLECTION = "alerts"
-
+ADMINS_EMAIL = "yaphetofori@gmail.com"
 #   "https://api.mailgun.net/v3/sandbox26656e57078b4b838ca8bf19932b2dc6.mailgun.org"
 #   "key-3ax6xnjp29jd6fds4gc373sgvjxteol0"
 #   "Mailgun Sandbox <postmaster@sandbox<26656e57078b4b838ca8bf19932b2dc6>.mailgun.org"
