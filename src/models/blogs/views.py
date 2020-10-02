@@ -71,7 +71,6 @@ def editpost(id):
                     if blog_post.post_images is not None:
                         try:
                             PostImage.get_by_id(blog_post.post_images[0]).delete()
-                            print(PostImage.get_by_id(blog_post.post_images[0])) 
                         except:
                             pass
                         blog_post.post_images.pop() 
