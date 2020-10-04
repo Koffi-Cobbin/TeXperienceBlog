@@ -29,7 +29,7 @@
                 <br>
             {% endif %}
             <br>
-        <p style="white-space: pre-wrap; font-size: medium; font-family: sans-serif;">{{ post.content[:500] }}...</p>
+        <p style="white-space: pre-wrap; font-size: medium; font-family: sans-serif;">{{ post.content[:500] }}</p>
         <a id="viewall" ><span>View all</span><br></a>
         <p id="hidden" style="white-space: pre-wrap; font-size: medium; font-family: sans-serif;">{{ post.content[500:] }}</p>
         <a class="btn btn-primary" href="{{ url_for('blogs.editpost', id = post._id) }}">Edit</a>
@@ -75,9 +75,11 @@
 </div>
 <script>
  $(function(){
+  $("#hidden").hide();
   $("#viewall").click(function(){
    $("#hidden").fadeToggle(1000);
   });
+  $("#viewall").hide();
  });
 </script>
 {% endblock%}
