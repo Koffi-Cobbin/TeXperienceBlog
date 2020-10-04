@@ -4,6 +4,7 @@
 <title>Profile/posts</title>
 <!-- You can add other css links here-->
 <script src="{{url_for('static', filename='js/main.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  {% endblock %}
 
 {% block content %} 
@@ -28,7 +29,9 @@
                 <br>
             {% endif %}
             <br>
-        <p style="white-space: pre-wrap; font-size: medium; font-family: sans-serif;">{{ post.content }}</p>
+        <p style="white-space: pre-wrap; font-size: medium; font-family: sans-serif;">{{ post.content[:500] }}...</p>
+        <a id="viewall" ><span>View all</span><br></a>
+        <p id="hidden" style="white-space: pre-wrap; font-size: medium; font-family: sans-serif;">{{ post.content[500:] }}</p>
         <a class="btn btn-primary" href="{{ url_for('blogs.editpost', id = post._id) }}">Edit</a>
         <a class="btn btn-danger "  href="{{ url_for('blogs.delete', id = post._id) }}">Delete</a>
         <hr>
@@ -70,4 +73,11 @@
         &copy; 2020 My Blog. All rights reserved.
     </div>
 </div>
+<script>
+ $(function(){
+  $("#viewall").click(function(){
+   $("#hidden").fadeToggle(1000);
+  });
+ });
+</script>
 {% endblock%}
