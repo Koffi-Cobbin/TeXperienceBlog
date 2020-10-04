@@ -8,6 +8,7 @@ from src.models.postImages.postImage import PostImage
 import src.models.alerts.constants as AlertConstants
 from werkzeug.utils import redirect
 import os
+import smtplib, ssl
 #---------------------------------------------------------------------------------------------
 
 app = Flask(__name__)
@@ -62,7 +63,26 @@ def contact():
     name = request.form['name']
     email = request.form['email']
     content = request.form['content']
-    send(name, email, content)
+    """
+        Using SMTP_SSL()
+    """
+    smtp_server = "smtp.gmail.com"
+    sender_email = os.environ.get("SENDER_EMAIL") 
+    receiver_email = os.environ.get("RECEIVER_EMAIL")
+    password = os.environ.get("PASSWORD")
+    message = """\
+    {}
+
+    Hi there,
+    A message from {}, {}. 
+    {}.""".format(sender_email, name, email, content)
+
+    # Create a secure SSL context
+    context = ssl.create_default_context()
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, message)
     flash('Message Sent (:')
     return redirect(url_for('trending'))
 
