@@ -68,7 +68,7 @@ def contact():
     """
     smtp_server = "smtp.gmail.com"
     sender_email = os.environ.get("SENDER_EMAIL") 
-    receiver_email = os.environ.get("RECEIVER_EMAIL")
+    receiver_email = os.environ.get("ADMINS_EMAIL")
     password = os.environ.get("PASSWORD")
     message = """\
     {}
