@@ -77,11 +77,12 @@
 </div>
 <script>
     function doSomething () {
-        var btn = document.getElementById("view more");
         var elem = document.getElementById("hidden");
         elem.style.display = "block";
         elem.id = "toggleview";
-        btn.span.INNERHTML = "View Less";
+        var spans = document.getElementById("view more").childNodes;
+        var span = spans[0];
+        span.nodeValue = "View Less";
     } 
  $(function(){
   $("#toggleview").click(function(){
