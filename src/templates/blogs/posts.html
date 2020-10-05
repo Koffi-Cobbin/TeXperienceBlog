@@ -74,14 +74,13 @@
     </div>
 </div>
 <script>
-    var btn = document.getElementById("viewmore");
-    var elem = document.getElementById("hidden");
-    elem.style.display = "block";
-    elem.id = "toggleview";
-    btn.INNERHTML = "View Less";
-</script>
-
-<script>
+    function doSomething () {
+        var btn = document.getElementById("viewmore");
+        var elem = document.getElementById("hidden");
+        elem.style.display = "block";
+        elem.id = "toggleview";
+        btn.INNERHTML = "View Less";
+    } 
  $(function(){
   $("#toggleview").click(function(){
    $("#hidden").fadeToggle(1000);
