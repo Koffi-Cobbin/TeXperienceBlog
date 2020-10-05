@@ -18,7 +18,6 @@
         <a style="float: right; margin-left: 5px; margin-top: 5px;" class="btn btn-success" href="{{ url_for('blogs.new_post', id = user._id) }}">+New Post</a>
         <hr>
         {% if posts %}
-        {% set cnt = [0] %} 
         {% for post in posts|reverse %}
         <article class="article-bg" >
             <h2 class="subtitle">{{ post.title }}</h2>
@@ -37,7 +36,6 @@
         <a class="btn btn-danger "  href="{{ url_for('blogs.delete', id = post._id) }}">Delete</a>
         <hr>
         </article> 
-        {% if cnt = cnt.pop()+1 %} {% endif %} 
         {% endfor %}
         {% else %}
         <p>You have no posts yet!</p>
