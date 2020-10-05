@@ -18,6 +18,7 @@
         <a style="float: right; margin-left: 5px; margin-top: 5px;" class="btn btn-success" href="{{ url_for('blogs.new_post', id = user._id) }}">+New Post</a>
         <hr>
         {% if posts %}
+        {% set cnt = [0] %} 
         {% for post in posts|reverse %}
         <article class="article-bg" >
             <h2 class="subtitle">{{ post.title }}</h2>
@@ -30,12 +31,13 @@
             {% endif %}
             <br>
         <p style="white-space: pre-wrap; font-size: medium; font-family: sans-serif;">{{ post.content[:500] }}</p>
-        <p id="hidden" style="white-space: pre-wrap; font-size: medium; font-family: sans-serif; display: none">{{ post.content[500:] }}</p>
-        <a id="viewmore" class="btn btn-default" onclick="doSomething()" ><span>View more</span><br></a>
+        <p id="{{ cnt[0] }} " style="white-space: pre-wrap; font-size: medium; font-family: sans-serif; display: none">{{ post.content[500:] }}</p>
+        <a id="viewmore" class="btn btn-default" onclick="doSomething({{ cnt[0] }})" ><span>View more</span><br></a>
         <a class="btn btn-primary" href="{{ url_for('blogs.editpost', id = post._id) }}">Edit</a>
         <a class="btn btn-danger "  href="{{ url_for('blogs.delete', id = post._id) }}">Delete</a>
         <hr>
         </article> 
+        {% if cnt = cnt.pop()+1 %} {% endif %} 
         {% endfor %}
         {% else %}
         <p>You have no posts yet!</p>
@@ -74,12 +76,12 @@
     </div>
 </div>
 <script>
-    function doSomething () {
-        var btn = document.getElementById("viewmore");
-        var elem = document.getElementById("hidden");
+    function doSomething (id) {
+        var btn = document.getElementById("view more");
+        var elem = document.getElementById(id);
         elem.style.display = "block";
         elem.id = "toggleview";
-        btn.INNERHTML = "View Less";
+        btn.span.INNERHTML = "View Less";
     } 
  $(function(){
   $("#toggleview").click(function(){
