@@ -31,8 +31,8 @@
             {% endif %}
             <br>
         <p style="white-space: pre-wrap; font-size: medium; font-family: sans-serif;">{{ post.content[:500] }}</p>
-        <p id="{{ cnt[0] }} " style="white-space: pre-wrap; font-size: medium; font-family: sans-serif; display: none">{{ post.content[500:] }}</p>
-        <a id="viewmore" class="btn btn-default" onclick="doSomething({{ cnt[0] }})" ><span>View more</span><br></a>
+        <p id="hidden" style="white-space: pre-wrap; font-size: medium; font-family: sans-serif; display: none">{{ post.content[500:] }}</p>
+        <a id="viewmore" class="btn btn-default" onclick="doSomething()" ><span>View more</span><br></a>
         <a class="btn btn-primary" href="{{ url_for('blogs.editpost', id = post._id) }}">Edit</a>
         <a class="btn btn-danger "  href="{{ url_for('blogs.delete', id = post._id) }}">Delete</a>
         <hr>
@@ -76,9 +76,9 @@
     </div>
 </div>
 <script>
-    function doSomething (id) {
+    function doSomething () {
         var btn = document.getElementById("view more");
-        var elem = document.getElementById(id);
+        var elem = document.getElementById("hidden");
         elem.style.display = "block";
         elem.id = "toggleview";
         btn.span.INNERHTML = "View Less";
