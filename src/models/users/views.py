@@ -136,4 +136,5 @@ def user_alerts():
 
 @user_blueprint.route('/all', methods=['GET', 'POST'])
 def get_all_users():
-    pass
+    details = User.all()
+    return render_template('users/users.html', details=details)
