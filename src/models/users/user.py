@@ -85,3 +85,7 @@ class User(object):
 
     def get_alerts(self):
         return Alert.find_by_user_email(self.email)
+    
+    @classmethod
+    def all(cls):
+        return [cls(**elem) for elem in Database.find(UserConstants.COLLECTION, {})]
