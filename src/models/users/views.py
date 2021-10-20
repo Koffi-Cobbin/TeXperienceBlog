@@ -138,5 +138,5 @@ def user_alerts():
 @user_decorators.requires_login
 def all_users():
     details = User.all()
-    print(details)
+    print(details['name'])
     return render_template('users/users.html', details=details)
