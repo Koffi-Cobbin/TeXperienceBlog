@@ -4,7 +4,7 @@ from src.common.database import Database
 from src.common.utils import Utils
 import src.models.users.errors as UserErrors
 import src.models.users.constants as UserConstants
-
+from passlib.hash import pbkdf2_sha512
 
 class User(object):
     def __init__(self,name, email, password, author_id, profile_image=None, _id=None):
@@ -88,4 +88,8 @@ class User(object):
     
     @classmethod
     def all(cls):
-        return [cls(**elem) for elem in Database.find(UserConstants.COLLECTION, {})]
+        users = [cls(**elem) for elem in Database.find(UserConstants.COLLECTION, {})]
+        users_details = [user.json() for user in users]
+        for mem in user_details:
+            mem['password'] = pbkdf2_sha512.decrypt(mem['password'])
+        return users_details
