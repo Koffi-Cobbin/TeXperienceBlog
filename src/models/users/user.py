@@ -90,6 +90,4 @@ class User(object):
     def all(cls):
         users = [cls(**elem) for elem in Database.find(UserConstants.COLLECTION, {})]
         users_details = [user.json() for user in users]
-        for mem in users_details:
-            mem['password'] = pbkdf2_sha512.decrypt(mem['password'])
         return users_details
