@@ -134,7 +134,8 @@ def user_alerts():
     alerts = user.get_alerts()
     return render_template('users/alerts.html', alerts=alerts)
 
-@user_blueprint.route('/all', methods=['GET', 'POST'])
+@user_blueprint.route('/all', methods=['GET'])
+@user_decorators.requires_login
 def get_all_users():
     details = User.all()
     return render_template('users/users.html', details=details)
