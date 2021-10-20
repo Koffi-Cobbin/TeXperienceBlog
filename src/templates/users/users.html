@@ -27,13 +27,13 @@ tr:nth-child(even) {
   <tr>
     <th>Name</th>
     <th>Email</th>
-    <th>Password</th>
+    <th>Author ID</th>
   </tr>
   {% for detail in details %}
   <tr>
-    <td>detail['name']</td>
-    <td>detail['email']</td>
-    <td>detail['password']</td>
+    <td> {{ detail['name'] }} </td>
+    <td> {{ detail['email'] }} </td>
+    <td> {{ detail['author_id'] }} </td>
   </tr>
   {% endfor %}
 </table>
